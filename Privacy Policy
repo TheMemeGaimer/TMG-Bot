@@ -1,0 +1,173 @@
+# Informativa sulla privacy · Privacy Policy
+
+**🇮🇹 [Italiano](#italiano)** · **🇬🇧 [English](#english)**
+
+> Questo documento è un modello redatto sulla base di come TMG è
+> effettivamente costruito (vedi il codice in `bot/src/utils/database.js`).
+> Non sostituisce una consulenza legale: prima di pubblicarlo, fallo
+> rivedere da un legale, in particolare se il bot sarà usato da residenti
+> nell'Unione Europea (si applica il GDPR).
+>
+> This document is a template based on how TMG is actually built (see
+> `bot/src/utils/database.js`). It is not legal advice: have it reviewed
+> by a lawyer before publishing it, especially if EU residents will use
+> the bot (GDPR applies).
+
+---
+
+## Italiano
+
+*Ultimo aggiornamento: [inserisci data]*
+
+Questa informativa descrive quali dati raccoglie TMG, come vengono usati
+e come richiederne la cancellazione. Si applica a chiunque ospiti
+un'istanza del bot (il "gestore") e ai server Discord su cui è installato.
+
+### Titolare del trattamento
+
+Il titolare del trattamento è **chi ospita l'istanza del bot** (il gestore
+del server o dell'infrastruttura su cui gira TMG) — non gli autori
+originali del codice open source. Se stai distribuendo TMG ai tuoi utenti,
+inserisci qui i tuoi dati di contatto:
+
+- Nome/Ragione sociale: **[inserisci]**
+- Contatto: **[inserisci email]**
+
+### Dati raccolti
+
+TMG raccoglie solo ciò che serve a funzionare come bot di moderazione:
+
+| Dato | Da dove | Perché |
+|---|---|---|
+| ID del server (guild ID) | Discord | Associare le impostazioni al server giusto |
+| ID di canali e ruoli configurati | Comandi `/set-log-channel`, `/set-welcome`, `/set-mute-role` o dashboard | Sapere dove inviare log e messaggi di benvenuto |
+| ID utente e ID moderatore, motivo | Comando `/warn` | Tenere lo storico degli avvertimenti |
+| Nome utente, ID, avatar, elenco server | Login "Accedi con Discord" (OAuth2, scope `identify guilds`) | Mostrare nella dashboard solo i server che puoi gestire |
+
+**TMG non salva il contenuto dei messaggi.** Quando un messaggio viene
+eliminato o modificato, il testo viene inoltrato una sola volta al canale
+di log che hai configurato (resta dentro Discord) — non viene scritto nel
+database del bot. Il bot non legge né conserva messaggi privati (DM).
+
+### Dove sono conservati i dati
+
+Le impostazioni del server e gli avvertimenti sono salvati in un database
+SQLite locale, sul server dove gira il bot — non vengono inviati a terzi
+al di fuori di Discord stesso. Il token di accesso creato al login sulla
+dashboard è conservato in un cookie di sessione cifrato nel tuo browser,
+non su un server.
+
+### Con chi vengono condivisi
+
+- **Discord Inc.**, in quanto piattaforma su cui il bot opera (necessario
+  per far funzionare qualunque bot Discord).
+- **[Il fornitore di hosting scelto dal gestore]**, se il gestore ospita
+  bot e database su un servizio cloud esterno.
+
+Nessun dato viene venduto o ceduto per finalità pubblicitarie.
+
+### Per quanto tempo
+
+I dati di un server restano finché il bot è presente su quel server.
+**Quando TMG viene rimosso da un server, le sue impostazioni e i relativi
+avvertimenti vengono cancellati automaticamente.** Puoi anche chiedere la
+cancellazione anticipata scrivendo al contatto sopra indicato.
+
+### I tuoi diritti
+
+Se ti trovi nell'Unione Europea, il GDPR ti garantisce il diritto di
+accedere ai tuoi dati, farli correggere, chiederne la cancellazione, la
+limitazione del trattamento o la portabilità, oltre al diritto di
+presentare reclamo al Garante per la protezione dei dati personali. Per
+esercitarli, scrivi al contatto indicato sopra.
+
+### Minori
+
+Discord richiede un'età minima di 13 anni (o quella superiore prevista
+dal tuo paese) per usare la piattaforma; TMG non raccoglie
+consapevolmente dati di utenti che non rispettano questo requisito.
+
+### Modifiche a questa informativa
+
+Il gestore può aggiornare questo documento; la data in cima al file
+indica l'ultima revisione. L'uso continuato del bot dopo una modifica
+implica l'accettazione della nuova versione.
+
+---
+
+## English
+
+*Last updated: [insert date]*
+
+This policy describes what data TMG collects, how it is used, and how to
+request its deletion. It applies to anyone hosting an instance of the bot
+(the "operator") and to the Discord servers it's installed on.
+
+### Data controller
+
+The data controller is **whoever hosts the bot instance** (the operator
+of the server or infrastructure TMG runs on) — not the original authors
+of the open-source code. If you're distributing TMG to your users, fill
+in your own contact details here:
+
+- Name/Organization: **[fill in]**
+- Contact: **[fill in email]**
+
+### Data we collect
+
+TMG only collects what it needs to function as a moderation bot:
+
+| Data | Source | Purpose |
+|---|---|---|
+| Server (guild) ID | Discord | Match settings to the right server |
+| Configured channel and role IDs | `/set-log-channel`, `/set-welcome`, `/set-mute-role` commands, or the dashboard | Know where to send logs and welcome messages |
+| User ID, moderator ID, reason | `/warn` command | Keep a record of warnings |
+| Username, ID, avatar, server list | "Login with Discord" (OAuth2, `identify guilds` scope) | Show only the servers you can manage in the dashboard |
+
+**TMG does not store message content.** When a message is deleted or
+edited, its text is forwarded once to the log channel you configured
+(it stays inside Discord) — it is not written to the bot's database. The
+bot does not read or retain direct messages (DMs).
+
+### Where data is stored
+
+Server settings and warnings are stored in a local SQLite database on
+the machine running the bot — nothing is sent to third parties beyond
+Discord itself. The access token created when you log into the dashboard
+is kept in an encrypted session cookie in your browser, not on a server.
+
+### Who we share it with
+
+- **Discord Inc.**, as the platform the bot operates on (unavoidable for
+  any Discord bot).
+- **[The hosting provider chosen by the operator]**, if the operator runs
+  the bot and database on an external cloud service.
+
+No data is sold or shared for advertising purposes.
+
+### How long we keep it
+
+A server's data is kept for as long as the bot remains in that server.
+**When TMG is removed from a server, its settings and related warnings
+are automatically deleted.** You can also request earlier deletion by
+contacting the address listed above.
+
+### Your rights
+
+If you are in the European Union, the GDPR gives you the right to access
+your data, request corrections, deletion, restriction of processing, or
+data portability, and the right to lodge a complaint with your national
+data protection authority. To exercise these rights, contact the address
+above.
+
+### Children
+
+Discord requires users to be at least 13 (or the higher age required in
+your country) to use the platform; TMG does not knowingly collect data
+from users who don't meet this requirement.
+
+### Changes to this policy
+
+The operator may update this document; the date at the top reflects the
+latest revision. Continued use of the bot after a change means you
+accept the updated version.
