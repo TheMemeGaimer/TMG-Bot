@@ -1,139 +1,83 @@
 # TMG
 
-TMG è un bot Discord di moderazione con una dashboard web collegata per
-gestirlo senza usare comandi. Il progetto è pensato per essere mostrato
-pubblicamente: codice pulito, diviso per responsabilità, pronto per GitHub.
+**Il tuo server, sotto controllo.**
 
-## Architettura
+TMG è un bot Discord open source per la moderazione, pensato per chi
+gestisce una community e non vuole passare le giornate a memorizzare
+comandi. Ban, kick, timeout, log automatici e una dashboard web dove
+configurare tutto con un clic — niente terminale, niente file da
+modificare a mano.
+
+---
+
+### 🛡️ Modera senza pensarci
 
 ```
-┌─────────────┐        gateway Discord        ┌──────────────┐
-│   Discord    │ ─────────────────────────────▶│  bot/ (Node) │
-│  (server ed  │◀───────────────────────────── │  discord.js  │
-│   utenti)    │                                │  + SQLite    │
-└─────────────┘                                └──────┬───────┘
-       ▲                                               │ API REST interna
-       │ OAuth2 login                                  │ (protetta da API key)
-       │                                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│  web/ (Next.js) — landing page + dashboard                   │
-│  login "Accedi con Discord" → mostra i server dell'utente    │
-│  → configura canale log, benvenuto, ruolo mute               │
-└─────────────────────────────────────────────────────────────┘
+/ban utente:@spammer motivo:"pubblicità non autorizzata"
+/timeout utente:@rumoroso minuti:10 motivo:"linguaggio offensivo"
+/warn utente:@nuovo motivo:"prima di tutto, leggi le regole 😉"
 ```
 
-- **bot/** — bot Discord (discord.js v14). Gestisce i comandi slash, il
-  sistema di log e salva le impostazioni in un database SQLite locale.
-  Espone anche una piccola API REST interna (Express) su cui il sito legge
-  e scrive le impostazioni.
-- **web/** — sito Next.js con landing page pubblica e dashboard privata.
-  Il login usa OAuth2 di Discord (via NextAuth); la dashboard mostra solo i
-  server dove l'utente ha il permesso "Gestisci server".
+Ogni azione finisce automaticamente nel canale di log, con chi l'ha fatta,
+a chi e perché. Nessun ban "misterioso" di cui nessuno sa nulla.
 
-Bot e sito sono due processi separati che comunicano tramite l'API interna:
-puoi tenerli sulla stessa macchina o su due host diversi, basta che
-`BOT_API_URL` nel sito punti al bot.
+### 🧭 Una dashboard, non un manuale
 
-## Funzionalità del bot
+Aggiungi TMG al server, fai login con Discord, e da lì scegli il canale
+dei log, il messaggio di benvenuto e il ruolo mute. Le modifiche sono
+immediate — il bot non va riavviato.
 
-| Categoria | Comandi |
+### 📜 I log parlano
+
+TMG tiene traccia di:
+- ban e sban
+- membri che entrano ed escono
+- messaggi cancellati o modificati
+- ogni comando di moderazione usato, da chi e su chi
+
+---
+
+## Comandi
+
+| | |
 |---|---|
-| Moderazione | `/ban` `/unban` `/kick` `/timeout` `/untimeout` `/warn` `/warnings` `/purge` |
-| Utility | `/ping` `/say` `/embed` `/help` |
-| Configurazione | `/settings` `/set-log-channel` `/set-welcome` `/set-mute-role` |
+| `/ban` `/unban` | Banna e sbanna, con opzione per ripulire i messaggi recenti |
+| `/kick` | Espelle un utente dal server |
+| `/timeout` `/untimeout` | Silenzia temporaneamente, o toglie il silenzio |
+| `/warn` `/warnings` | Registra e consulta gli avvertimenti di un utente |
+| `/purge` | Ripulisce in blocco gli ultimi messaggi di un canale |
+| `/say` `/embed` | Fa scrivere al bot un messaggio o un embed personalizzato |
+| `/settings` | Mostra la configurazione attuale del server |
 
-Il bot registra automaticamente nel canale di log: ban, membri entrati/usciti,
-messaggi eliminati o modificati.
+## 🧱 Sotto il cofano
 
-## Prerequisiti
+- **Bot** — Node.js + [discord.js](https://discord.js.org), con un database
+  SQLite locale per le impostazioni di ogni server.
+- **Dashboard** — Next.js, login con OAuth2 di Discord, parla con il bot
+  tramite una piccola API interna.
+- Codice diviso per responsabilità: un file per comando, un file per
+  evento — facile da leggere, facile da estendere.
 
-- Node.js 18 o superiore
-- Un account Discord e un'applicazione creata su
-  [discord.com/developers/applications](https://discord.com/developers/applications)
-
-## 1. Crea l'applicazione Discord
-
-1. Vai su **Discord Developer Portal → New Application**, chiamala "TMG".
-2. Nella sezione **Bot**: crea il bot, copia il **Token** (userai `DISCORD_TOKEN`)
-   e attiva l'intent **Server Members** e **Message Content**.
-3. Nella sezione **OAuth2 → General**: copia **Client ID** e **Client Secret**.
-4. Sempre in **OAuth2 → General**, aggiungi questo redirect URL:
-   `http://localhost:3000/api/auth/callback/discord`
-   (in produzione, sostituisci `localhost:3000` con il tuo dominio).
-
-## 2. Avvia il bot
+## 🚀 In breve
 
 ```bash
-cd bot
-cp .env.example .env
-# apri .env e incolla DISCORD_TOKEN, DISCORD_CLIENT_ID, e scegli API_SECRET
+cd bot && cp .env.example .env    # incolla token e client ID del bot
+npm install && npm run deploy-commands && npm start
 
-npm install
-npm run deploy-commands   # registra gli slash command su Discord
-npm start                 # avvia il bot + l'API interna
+cd web && cp .env.example .env.local
+npm install && npm run dev        # dashboard su localhost:3000
 ```
 
-Se imposti `DEV_GUILD_ID` nel `.env` (l'ID di un tuo server di test), i
-comandi diventano disponibili all'istante lì; senza, la registrazione è
-globale e Discord ci mette fino a un'ora a propagarla su tutti i server.
+Guida completa passo-passo, incluso come creare l'applicazione su Discord,
+nella [wiki](#) *(o più giù, se preferisci tenerla nello stesso file)*.
 
-## 3. Avvia il sito
+## 🤝 Contribuire
 
-```bash
-cd web
-cp .env.example .env.local
-# incolla DISCORD_CLIENT_ID/SECRET, genera NEXTAUTH_SECRET con:
-#   openssl rand -base64 32
-# BOT_API_SECRET deve combaciare con API_SECRET usato nel bot
+Pull request, issue e idee per nuovi comandi sono benvenute. Se aggiungi
+un comando, mettilo nella cartella giusta sotto `bot/src/commands/` e
+compare automaticamente sia in `/help` che nella dashboard.
 
-npm install
-npm run dev
-```
+## 📄 Licenza
 
-Apri `http://localhost:3000`: dalla home puoi aggiungere il bot a un server,
-fare login con Discord e gestire le impostazioni dalla dashboard.
-
-## Permessi del bot
-
-Il link d'invito richiede: gestione ban/kick, timeout (moderate members),
-gestione messaggi, gestione canali e ruoli, lettura/scrittura messaggi. Il
-valore numerico è già calcolato in `NEXT_PUBLIC_BOT_PERMISSIONS`
-(`.env.example` del sito); puoi ricalcolarlo con il
-[permission calculator](https://discordapi.com/permissions.html) ufficiale
-se vuoi restringerlo o ampliarlo.
-
-## Struttura del codice
-
-```
-TMG/
-├── bot/
-│   └── src/
-│       ├── commands/{moderation,utility,config}/  → uno slash command per file
-│       ├── events/                                → un evento Discord per file
-│       ├── handlers/                               → caricano comandi/eventi
-│       ├── utils/                                   → database, log, embed
-│       ├── api/server.js                            → API REST interna
-│       └── index.js                                 → avvio del bot
-└── web/
-    ├── app/
-    │   ├── page.js                       → landing page
-    │   ├── dashboard/                    → lista server + pagina impostazioni
-    │   └── api/                          → auth NextAuth + proxy verso il bot
-    ├── components/                        → UI (Navbar, form, card server...)
-    └── lib/                                → helper OAuth Discord e chiamate API
-```
-
-## Pubblicarlo su GitHub
-
-Il repository è già inizializzato con Git e un primo commit. Per pubblicarlo:
-
-```bash
-# crea prima un repository vuoto su github.com (senza README), poi:
-git remote add origin https://github.com/TUO-UTENTE/TMG.git
-git branch -M main
-git push -u origin main
-```
-
-## Licenza
-
-MIT — vedi [LICENSE](./LICENSE).
+Distribuito con licenza MIT — vedi [LICENSE](./LICENSE). Usalo, modificalo,
+portalo sul tuo server.
