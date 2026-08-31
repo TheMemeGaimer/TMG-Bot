@@ -1,0 +1,175 @@
+# Termini di servizio · Terms of Service
+
+**🇮🇹 [Italiano](#italiano)** · **🇬🇧 [English](#english)**
+
+---
+
+## Italiano
+
+*Ultimo aggiornamento: 31/08/2026*
+
+Questi termini regolano l'uso di TMG (il "bot") e della relativa
+dashboard web (il "sito"), gestiti da **[nome del gestore]** (il
+"gestore"). Aggiungendo il bot a un server, accedendo al sito o usandone
+i comandi, accetti questi termini. Per come trattiamo i dati, vedi
+l'[informativa privacy](./PRIVACY.md).
+
+### 1. Cos'è TMG
+
+TMG è un bot di moderazione per Discord: mette a disposizione comandi
+come `/ban`, `/kick`, `/timeout` e `/warn`, un sistema di log automatico
+e una dashboard web per configurarlo. Il codice è **open source** (licenza
+MIT, vedi [LICENSE](./LICENSE)): chiunque può ispezionarlo, modificarlo o
+ospitare una propria istanza. Questi termini riguardano l'uso
+dell'istanza gestita da **[nome del gestore]**.
+
+### 2. Chi può usarlo
+
+Per usare TMG devi rispettare i [Termini di servizio di Discord](https://discord.com/terms)
+e le relative [norme della community](https://discord.com/guidelines),
+incluso il requisito di età minima. Se aggiungi il bot a un server, dichiari
+di avere l'autorità per farlo (es. di essere amministratore del server).
+
+### 3. Responsabilità di chi amministra il server
+
+I comandi di moderazione (`/ban`, `/kick`, `/timeout`, `/warn`, `/purge`,
+ecc.) eseguono l'azione voluta dalla persona che li digita: **le decisioni
+di moderazione restano responsabilità degli amministratori e dei
+moderatori del server**, non del gestore del bot. Chi ha accesso alla
+dashboard può vedere e modificare solo i server su cui ha già i permessi
+di gestione tramite il proprio account Discord.
+
+### 4. Uso accettabile
+
+Non puoi usare TMG per:
+
+- violare leggi applicabili o i termini di Discord;
+- molestare, minacciare o danneggiare altri utenti;
+- tentare di accedere senza autorizzazione a server, dati o account altrui;
+- sovraccaricare deliberatamente il bot o la dashboard (es. spam di comandi).
+
+Il gestore può sospendere l'accesso al bot su un server, o a un account
+sulla dashboard, in caso di abuso.
+
+### 5. Disponibilità del servizio
+
+TMG è fornito **"così com'è"**, senza garanzie di funzionamento
+ininterrotto. Manutenzione, aggiornamenti di Discord o problemi
+dell'infrastruttura possono causare interruzioni temporanee. Il gestore
+non garantisce che log, avvertimenti o impostazioni non vadano mai persi,
+per quanto il sistema sia progettato per essere affidabile.
+
+### 6. Limitazione di responsabilità
+
+Nei limiti consentiti dalla legge, il gestore non è responsabile per
+danni indiretti, perdita di dati o conseguenze derivanti dall'uso (o
+mancato uso) del bot — incluse le azioni di moderazione eseguite dagli
+amministratori del server tramite i comandi di TMG.
+
+### 7. Modifiche e cessazione del servizio
+
+Il gestore può modificare o interrompere il servizio in qualsiasi
+momento, anche rimuovendo il bot da un server. Chi amministra un server
+può rimuovere il bot quando vuole; a quel punto le relative impostazioni
+e i relativi avvertimenti vengono cancellati automaticamente, come
+descritto nell'[informativa privacy](./PRIVACY.md).
+
+### 8. Modifiche a questi termini
+
+Il gestore può aggiornare questo documento; la data in cima al file
+indica l'ultima revisione. L'uso continuato del bot dopo una modifica
+implica l'accettazione della nuova versione.
+
+### 9. Legge applicabile
+
+****
+
+### Contatti
+
+Domande su questi termini: **therealvalejuve1708@gmail.com**
+
+---
+
+## English
+
+*Last updated: 31/08/2026*
+
+These terms govern the use of TMG (the "bot") and its web dashboard (the
+"site"), operated by **[operator name]** (the "operator"). By adding the
+bot to a server, accessing the site, or using its commands, you accept
+these terms. For how we handle data, see the [privacy policy](./PRIVACY.md).
+
+### 1. What TMG is
+
+TMG is a Discord moderation bot: it provides commands such as `/ban`,
+`/kick`, `/timeout` and `/warn`, an automatic logging system, and a web
+dashboard to configure it. The code is **open source** (MIT license, see
+[LICENSE](./LICENSE)): anyone can inspect it, modify it, or host their
+own instance. These terms cover use of the instance operated by
+**[operator name]**.
+
+### 2. Who can use it
+
+To use TMG you must comply with [Discord's Terms of Service](https://discord.com/terms)
+and [Community Guidelines](https://discord.com/guidelines), including
+the minimum age requirement. By adding the bot to a server, you confirm
+you have the authority to do so (e.g., you are an administrator of that
+server).
+
+### 3. Server administrators' responsibility
+
+Moderation commands (`/ban`, `/kick`, `/timeout`, `/warn`, `/purge`,
+etc.) carry out the action requested by the person typing them:
+**moderation decisions remain the responsibility of the server's
+administrators and moderators**, not the bot operator. Dashboard access
+only shows and lets you edit servers where your own Discord account
+already has management permissions.
+
+### 4. Acceptable use
+
+You may not use TMG to:
+
+- violate applicable laws or Discord's terms;
+- harass, threaten, or harm other users;
+- attempt unauthorized access to other servers, data, or accounts;
+- deliberately overload the bot or dashboard (e.g., command spam).
+
+The operator may suspend the bot's access to a server, or a dashboard
+account, in case of abuse.
+
+### 5. Service availability
+
+TMG is provided **"as is"**, without guarantees of uninterrupted
+operation. Maintenance, Discord platform changes, or infrastructure
+issues may cause temporary downtime. The operator does not guarantee
+that logs, warnings, or settings will never be lost, although the system
+is designed to be reliable.
+
+### 6. Limitation of liability
+
+To the extent permitted by law, the operator is not liable for indirect
+damages, data loss, or consequences arising from use (or inability to
+use) the bot — including moderation actions carried out by server
+administrators through TMG's commands.
+
+### 7. Changes and termination of service
+
+The operator may modify or discontinue the service at any time,
+including removing the bot from a server. Server administrators can
+remove the bot whenever they choose; doing so automatically deletes the
+related settings and warnings, as described in the
+[privacy policy](./PRIVACY.md).
+
+### 8. Changes to these terms
+
+The operator may update this document; the date at the top reflects the
+latest revision. Continued use of the bot after a change means you
+accept the updated version.
+
+### 9. Governing law
+
+****
+
+### Contact
+
+Questions about these terms: **therealvalejuve1708@gmail.com**
